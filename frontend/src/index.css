@@ -1,5 +1,17 @@
-:root {
+html,
+body,
+#root{
+  width: 100%;
+  min-height: 100vh;
+  margin:0;
+}
 
-  background-color: rgba(69, 69, 69, 1.0);
+body{
+  background-color: rgba(33, 33, 33, 1.0);
+}
 
+#root {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }

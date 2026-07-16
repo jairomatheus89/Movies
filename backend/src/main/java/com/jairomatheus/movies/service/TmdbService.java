@@ -1,5 +1,7 @@
 package com.jairomatheus.movies.service;
 
+import com.jairomatheus.movies.dto.TmdbMovieDto;
+import com.jairomatheus.movies.dto.TmdbPopularResponseDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -19,14 +21,13 @@ public class TmdbService {
         this.restClient = restClient;
     }
 
-    public String getPopularMovies(){
-
-
+    public TmdbPopularResponseDto getPopularMovies(int page){
 
         return this.restClient.get()
-                .uri(apiUrl + "/movie/popular?api_key=" + apiKey)
+                .uri(apiUrl + "/movie/popular?page=" + page +  "&api_key=" + apiKey)
                 .retrieve()
-                .body(String.class)
+                .body(TmdbPopularResponseDto.class)
         ;
+
     }
 }

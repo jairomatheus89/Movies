@@ -2,11 +2,9 @@ package com.jairomatheus.movies.service;
 
 import com.jairomatheus.movies.entity.MovieEntity;
 import com.jairomatheus.movies.repositories.MovieRepository;
-import org.springframework.http.ResponseEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class MovieService {
@@ -17,7 +15,7 @@ public class MovieService {
         this.repository = repository;
     }
 
-    public List<MovieEntity> listAllMovies(){
-        return repository.findAll();
+    public Page<MovieEntity> listAllMovies(int page, int size){
+        return repository.findAll(PageRequest.of(page, size));
     }
 }
