@@ -10,7 +10,7 @@ body{
   background-color: rgba(33, 33, 33, 1.0);
 }
 
-#root {
+#root{
   display:flex;
   flex-direction: column;
   align-items: center;

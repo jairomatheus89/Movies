@@ -1,0 +1,78 @@
+.body{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.loginContent{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 221, 85);
+  width: 400px;
+  height: 400px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid rgb(255, 221, 85);
+  border-radius: 26px;
+  gap:2%;
+}
+
+h2{
+  margin: 0;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.inputsGeneral{
+  margin: 0;
+}
+
+.butGeneral{
+  color: rgb(255, 221, 85);
+  font-size: 16pt;
+  background-color:rgba(33, 33, 33, 1.0);
+  border: 2px solid rgb(255, 221, 85);
+  border-radius: 16px;
+  margin-top: 8%;
+}
+
+.butGeneral:hover{
+  cursor: pointer;
+  text-shadow: 0 0 4px rgb(255, 221, 85);
+}
+
+.registerSpan{
+  margin-top: 4%;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.signUpClick{
+  font-size: 14pt;
+  color: rgb(0, 165, 165);
+}
+
+.signUpClick:hover{
+  cursor: pointer;
+  font-size: 14pt;
+  color: rgb(0, 255, 255);
+  text-shadow: 0 0 4px rgb(134, 255, 255);
+}
+
+.alert{
+  display: flex;
+  justify-content: center;
+  font-size: 14pt;
+  width: 100%;
+  height: auto;
+  margin-top: 5%;
+  /* background-color: white; */
+}
