@@ -1,15 +1,19 @@
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import './Login.css'
+
+
+
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer';
-
-import './Login.css'
-import { useEffect, useState } from 'react';
-
 
 function LoginFormArea({setRegisterMode, userAlert}){
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginAlert, setLoginAlert] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     
@@ -33,7 +37,7 @@ function LoginFormArea({setRegisterMode, userAlert}){
     }
 
     const res = await fetch(
-      "http://192.168.1.102:8080/user/login",
+      "http://192.168.1.102:8080/auth/login",
       {
         method: 'POST',
         headers: {
@@ -47,24 +51,32 @@ function LoginFormArea({setRegisterMode, userAlert}){
       const error = await res.json();
 
       setLoginAlert(error.message);
+
+      if(error.status == 401) clearInputs();
       throw new Error(error.message);
     }
 
     const response = await res.json();
 
     console.log("SUCESSO: ", response.message);
+
+    localStorage.setItem(
+      "token",
+      response.payload.token
+    )
+
     clearInputs();
-    setLoginAlert(response.message)
-    window.alert(response.message);
+
+    navigate("/perfil");
   }
 
   return (
     <div className='loginContent'>
       
       <h2>email:</h2>
-      <input className='inputsGeneral' type="text" onChange={(e) => {setEmail(e.target.value)}}/>
+      <input className='inputsGeneral' type="text" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
       <h2>Password:</h2>
-      <input className='inputsGeneral' type="password" autoComplete='current-password' onChange={(e) => {setPassword(e.target.value)}}/>
+      <input className='inputsGeneral' type="password" autoComplete='current-password' value={password} onChange={(e) => {setPassword(e.target.value)}}/>
       <button className='butGeneral' onClick={loginUser}>Sign In</button>
       <span className='registerSpan'>
         <span>Nao possui uma conta? </span><span className='signUpClick' onClick={setRegisterMode}>Sign Up</span>
@@ -110,7 +122,7 @@ function RegisterFormArea({setLoginMode, setUserAlert}){
       }
 
       const res = await fetch(
-        "http://192.168.1.102:8080/user/register",
+        "http://192.168.1.102:8080/auth/register",
         {
           method: 'POST',
           headers: {

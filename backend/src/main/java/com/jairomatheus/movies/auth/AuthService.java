@@ -1,13 +1,18 @@
 package com.jairomatheus.movies.auth;
 
+import com.jairomatheus.movies.dto.JwtPayLoadDto;
 import com.jairomatheus.movies.dto.UserLoginResponseDto;
 import com.jairomatheus.movies.dto.UserResponseDto;
 import com.jairomatheus.movies.entity.UserEntity;
 import com.jairomatheus.movies.exceptions.EmailAlreadyExistsException;
 import com.jairomatheus.movies.exceptions.InvalidAuthenticationException;
 import com.jairomatheus.movies.repositories.UserRepository;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 @Service
 public class AuthService {
@@ -57,7 +62,17 @@ public class AuthService {
         return new UserLoginResponseDto(
                 user.getName(),
                 user.getEmail(),
-                token
+                new JwtPayLoadDto(
+                    token,
+                    jwtService.extractAllClaims(token).getIssuedAt().getTime() / 1000,
+                    jwtService.extractAllClaims(token).getExpiration().getTime() / 1000
+                )
         );
     }
+
+
+
+
+
+
 }

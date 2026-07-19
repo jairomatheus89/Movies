@@ -1,14 +1,10 @@
 package com.jairomatheus.movies.auth;
 
-import com.jairomatheus.movies.dto.UserLoginDto;
-import com.jairomatheus.movies.dto.UserLoginResponseDto;
-import com.jairomatheus.movies.dto.UserRegisterDto;
-import com.jairomatheus.movies.dto.UserResponseDto;
+import com.jairomatheus.movies.dto.*;
+import com.jairomatheus.movies.exceptions.InvalidAuthenticationException;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.oauth2.server.resource.authentication.BearerTokenAuthentication;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -29,4 +25,5 @@ public class AuthController {
     public ResponseEntity<UserLoginResponseDto> login(@RequestBody UserLoginDto dto){
         return ResponseEntity.ok(this.service.loginUser(dto.email(), dto.password()));
     }
+
 }

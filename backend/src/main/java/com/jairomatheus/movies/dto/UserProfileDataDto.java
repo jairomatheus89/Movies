@@ -1,7 +1,8 @@
 package com.jairomatheus.movies.dto;
 
-public record UserLoginResponseDto(
+public record UserProfileDataDto(
         String name,
         String email,
-        JwtPayLoadDto payload
-){}
+        String message
+) {
+}
