@@ -6,3 +6,10 @@
   width: 100%;
   min-height: 100vh;
 }
+
+h2{
+  margin-top: 10px;
+  color: rgb(255, 221, 85);
+  font-size: 26pt;
+  text-shadow: 2px 2px 3px black;
+}

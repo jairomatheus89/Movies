@@ -51,9 +51,6 @@ function Header({isLoginPage, userData, isFavPage}){
 
             setLoginPage(isLoginPage);
         }
-
-
-
         checkLoginPage();
 
     },[]);

@@ -11,10 +11,13 @@ import com.jairomatheus.movies.repositories.FavoriteRepository;
 import com.jairomatheus.movies.repositories.MovieRepository;
 import com.jairomatheus.movies.repositories.UserRepository;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -67,6 +70,15 @@ public class UserService {
         }
 
         return new AddFavMovieResponseDto("FILME FAVORITADO COM SUCESSO!");
+    }
+
+    public Page<MovieEntity> listMyFavorites(UserDetails userDetails, Pageable pageable){
+        UserEntity user = (UserEntity) userDetails;
+
+        Page<FavoriteEntity> favorites = this.favoriteRepository.findByUserId(user, pageable);
+
+
+        return favorites.map(FavoriteEntity::getMovieId);
     }
 
 }

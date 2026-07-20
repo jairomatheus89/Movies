@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import PlusIcon from "../../assets/iconzinMovie.svg?react"
 
-import './PerfilMoviesCont.css'
+import styles from './PerfilMoviesCont.module.css'
 
 
 
-function MoviesContents({setFavAlert}){
+function PerfilMoviesContents({setFavAlert}){
   const [movies, setMovies] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [moviesPage, setMoviesPage] = useState(0);
@@ -55,32 +55,46 @@ function MoviesContents({setFavAlert}){
   if(movies != null){console.log(movies)}
 
   return(
-    <div className='moviesContents'>
-      <div className='moviesCatalog'>
-        {
-          movies != null
-          ? movies.map(movie => (
-            <div key={movie.id} className='movieCards' >
-              <img className='moviePoster' src={`https://image.tmdb.org/t/p/w500${movie.posterPath}`} alt="movie.title" />
-              <div className='cardOverlay'>
-                <div onClick={() => addFavoriteMovie(movie.id)}><PlusIcon className='plusIcon'/></div>
-                <p className='addFavMsg'>adicionar aos favoritos</p>
+    <div className={styles.moviesContents}>
+      <div className={styles.moviesCatalog}>
+        {movies ? (
+          movies.map((movie) => (
+            <div key={movie.id} className={styles.movieCard}>
+              <img
+                className={styles.moviePoster}
+                src={`https://image.tmdb.org/t/p/w500${movie.posterPath}`}
+                alt={movie.title}
+              />
+
+              <div className={styles.overlay}>
+                <button
+                  className={styles.favoriteButton}
+                  onClick={() => addFavoriteMovie(movie.id)}
+                >
+                  <PlusIcon className={styles.plusIcon} />
+                </button>
+
+                <p>Adicionar aos favoritos</p>
               </div>
-              <span className='movieTitle'>{movie.title}</span>
+
+              <span className={styles.movieTitle}>
+                {movie.title}
+              </span>
             </div>
           ))
-          : <div>TEM NADA DE FILMES AQUI...</div>
-        }
+        ) : (
+          <div>Tem nada de filmes aqui...</div>
+        )}
       </div>
       
-      <div className='selectPages'>
-        <button className='pageButtons' onClick={lastPage}>&lt;</button>
-        <span className='pageSpan'>{moviesPage + 1}/{totalPages}</span>
-        <button className='pageButtons' onClick={nextPage}>&gt;</button>
+      <div className={styles.selectPages}>
+        <button className={styles.pageButtons} onClick={lastPage}>&lt;</button>
+        <span className={styles.pageSpan}>{moviesPage + 1}/{totalPages}</span>
+        <button className={styles.pageButtons} onClick={nextPage}>&gt;</button>
       </div>
     </div>
   )
 
 }
 
-export default MoviesContents;
+export default PerfilMoviesContents;

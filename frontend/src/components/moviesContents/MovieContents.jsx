@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import './MovieContents.css'
+import styles from './MovieContents.module.css'
 
 function MoviesContents(){
   const [movies, setMovies] = useState([]);
@@ -30,24 +30,24 @@ function MoviesContents(){
   if(movies != null){console.log(movies)}
 
   return(
-    <div className='moviesContents'>
-      <div className='moviesCatalog'>
+    <div className={styles.moviesContents}>
+      <div className={styles.moviesCatalog}>
         {
           movies != null
           ? movies.map(movie => (
-            <div key={movie.id} className='movieCards'>
-              <img className='moviePoster' src={`https://image.tmdb.org/t/p/w500${movie.posterPath}`} alt="movie.title" />
-              <span className='movieTitle'>{movie.title}</span>
+            <div key={movie.id} className={styles.movieCards}>
+              <img className={styles.moviePoster} src={`https://image.tmdb.org/t/p/w500${movie.posterPath}`} alt="movie.title" />
+              <span className={styles.movieTitle}>{movie.title}</span>
             </div>
           ))
           : <div>TEM NADA DE FILMES AQUI...</div>
         }
       </div>
       
-      <div className='selectPages'>
-        <button className='pageButtons' onClick={lastPage}>&lt;</button>
-        <span className='pageSpan'>{moviesPage + 1}/{totalPages}</span>
-        <button className='pageButtons' onClick={nextPage}>&gt;</button>
+      <div className={styles.selectPages}>
+        <button className={styles.pageButtons} onClick={lastPage}>&lt;</button>
+        <span className={styles.pageSpan}>{moviesPage + 1}/{totalPages}</span>
+        <button className={styles.pageButtons} onClick={nextPage}>&gt;</button>
       </div>
     </div>
   )

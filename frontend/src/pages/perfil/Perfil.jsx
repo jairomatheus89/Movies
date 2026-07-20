@@ -1,8 +1,8 @@
-import './Perfil.css'
+import styles from './Perfil.module.css'
 
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
-import MovieContents from '../../components/perfilMoviesCont/PerfilMoviesCont'
+import PerfilMoviesContents from '../../components/perfilMoviesCont/PerfilMoviesCont'
 import { useEffect, useState } from 'react';
 
 async function fetchProfileData(){
@@ -34,11 +34,11 @@ function Perfil(){
     }, [favAlert])
 
     return(
-        <div className="body">
+        <div className={styles.body}>
             <Header isLoginPage={false} userData={user} isFavPage={false}/>
-            <MovieContents setFavAlert={setFavAlert}/>
+            <PerfilMoviesContents setFavAlert={setFavAlert}/>
             <Footer/>
-            <div className={!favAlert.startsWith("ESSE FILME JA")? 'favAlertOk' : 'favAlertFail'}>{favAlert}</div>
+            <div className={!favAlert.startsWith("ESSE FILME JA")? styles.favAlertOk : styles.favAlertFail}>{favAlert}</div>
         </div>
     );
 }

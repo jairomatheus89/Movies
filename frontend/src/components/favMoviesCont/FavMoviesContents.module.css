@@ -13,75 +13,51 @@
 }
 
 .moviesCatalog{
-  display: grid;
+  flex-direction: column;
+  display: flex;
   justify-items: center;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 40px;
   color:white;
   width: 100%;
   /* height: 94%; */
-  /* background-color: blue; */
+  /* background-color: rgba(0, 0, 255, 0.5); */
   overflow: hidden;
 }
 
 .movieCards{
   position: relative;
   display: flex;
-  height: 400px;
-  flex-direction: column;
+  width: 100%;
+  gap:50px;
+  flex-direction: row;
   align-items: center;
-  justify-content: end;
-  border: 2px solid rgb(255, 221, 85);
-  background-color: black;
-  aspect-ratio: 2/ 3;
+  justify-content: left;
+  padding-top:20px;
+  border: 0;
+  border-top: 3px solid rgb(255, 221, 85);;
+  background-color: transparent;
+}
+
+.moviePoster{
+  position: relative; /* <- importante */
+  width: 30%;
+  aspect-ratio: 2 / 3;
   overflow: hidden;
-
-  transition: filter .3s, transform .3s;
+  border-radius: 50px;
 }
 
-.cardOverlay{
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  transform: translateY(100%);
-  transition: transform .3s;
-}
-
-.addFavMsg{
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none;    /* Firefox */
-  -ms-user-select: none;     /* Internet Explorer/Edge */
-  user-select: none;
-}
-
-.movieCards:hover .cardOverlay{
-  transform: translateY(0);
-  
-}
-
-.plusIcon path{
-  fill: white;
-}
-
-.plusIcon:hover{
-  cursor:pointer;
+.moviePoster img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .movieTitle{
   position: absolute;
-  font-size: 18pt;
-  text-shadow: 0 0 3px rgb(255, 221, 85);
-  background-color: rgba(0, 0, 0, 0.705);
-  max-width: 89%;
-  padding: 1%;
-  border-radius: 12px;
-  margin-bottom: 4%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none;    /* Firefox */
@@ -89,10 +65,15 @@
   user-select: none;
 }
 
-.moviePoster{
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  object-fit: cover;
+.movieInfo{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 60%;
+  /* background-color: black; */
+  text-shadow: 2px 2px 2px black;
+  font-size: 16pt;
 }
 
 .selectPages{
@@ -126,4 +107,8 @@
 .pageButtons:hover{
   cursor:pointer;
   text-shadow: 0 0 4px rgb(255, 221, 85);
+}
+
+h3{
+  font-size: 20pt;
 }
