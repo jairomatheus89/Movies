@@ -1,5 +1,7 @@
 package com.jairomatheus.movies.controller;
 
+import com.jairomatheus.movies.dto.AddFavMovieResponseDto;
+import com.jairomatheus.movies.dto.SaveFavoriteMovieDto;
 import com.jairomatheus.movies.dto.UserProfileDataDto;
 import com.jairomatheus.movies.entity.UserEntity;
 import com.jairomatheus.movies.service.UserService;
@@ -24,5 +26,13 @@ public class UserController {
     public ResponseEntity<UserProfileDataDto> userProfile(@AuthenticationPrincipal UserDetails user){
 
         return ResponseEntity.ok(this.service.showUserProfileData(user));
+    }
+
+    @PostMapping("/profile/addFavMovie")
+    public ResponseEntity<AddFavMovieResponseDto> addFavMovie(
+        @AuthenticationPrincipal UserDetails user,
+        @RequestBody SaveFavoriteMovieDto dto
+    ){
+        return ResponseEntity.ok(this.service.saveFavMovieIntoProfile(user, dto));
     }
 }

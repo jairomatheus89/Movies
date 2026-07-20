@@ -37,7 +37,7 @@ function LoginFormArea({setRegisterMode, userAlert}){
     }
 
     const res = await fetch(
-      "http://192.168.1.102:8080/auth/login",
+      "http://192.168.1.102:3000/auth/login",
       {
         method: 'POST',
         headers: {
@@ -122,7 +122,7 @@ function RegisterFormArea({setLoginMode, setUserAlert}){
       }
 
       const res = await fetch(
-        "http://192.168.1.102:8080/auth/register",
+        "http://192.168.1.102:3000/auth/register",
         {
           method: 'POST',
           headers: {

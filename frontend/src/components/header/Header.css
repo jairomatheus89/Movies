@@ -90,8 +90,10 @@
   margin-left: 1%;
 }
 
-
 .headerUserName{
+  display: flex;
+  gap:30px;
+  align-items: end;
   font-size: 16pt;
   color: rgb(255, 221, 85);
   margin-top:2%;
@@ -101,5 +103,14 @@
   -moz-user-select: none;    /* Firefox */
   -ms-user-select: none;     /* Internet Explorer/Edge */
   user-select: none;
+}
+
+.favBut{
+  font-size: 20pt;
+}
+
+.favBut:hover{
+  cursor:pointer;
+  text-shadow: 0 0 10px rgb(255, 255, 255);
 }
 

@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import reactLogo from '../../assets/react.svg'
 import './Header.css'
@@ -19,17 +19,30 @@ function NotAuth({loginPage}){
     );
 }
 
-function IsAuth({user}){
+function IsAuth({user, isFavPage}){
+
+    const navigate = useNavigate();
+
     return(
         <div className='headerUserName'>
             {user.name}
+            <div className="favBut">
+                {
+                    !isFavPage
+                    ?
+                        <span onClick={() => navigate("/perfil/favorites")}>Favoritos</span>
+                    :
+                        <span onClick={() => navigate("/perfil")}>Buscar</span>
+                }
+            </div>
         </div>
+        
     );
 }
 
 
 
-function Header({isLoginPage, userData}){
+function Header({isLoginPage, userData, isFavPage}){
 
     const [loginPage, setLoginPage] = useState(false);
 
@@ -56,7 +69,7 @@ function Header({isLoginPage, userData}){
                 ?
                     <NotAuth loginPage={loginPage}/>
                 :
-                    <IsAuth user={userData}/>
+                    <IsAuth user={userData} isFavPage={isFavPage}/>
             }
       </header>
     );

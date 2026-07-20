@@ -1,0 +1,93 @@
+.moviesContents{
+  display: flex;
+  margin-top:1%;
+  margin-bottom:1%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap:10px;
+  width: 80%;
+  /* height: 800px; */
+  /* background-color: orange; */
+  overflow: hidden;
+}
+
+.moviesCatalog{
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  color:white;
+  width: 100%;
+  /* height: 94%; */
+  /* background-color: blue; */
+  overflow: hidden;
+}
+
+.movieCards{
+  position: relative;
+  display: flex;
+  height: 400px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  border: 2px solid rgb(255, 221, 85);
+  background-color: black;
+  aspect-ratio: 2/ 3;
+  overflow: hidden;
+}
+
+.movieTitle{
+  position: absolute;
+  font-size: 18pt;
+  text-shadow: 0 0 3px rgb(255, 221, 85);
+  background-color: rgba(0, 0, 0, 0.705);
+  max-width: 89%;
+  padding: 1%;
+  border-radius: 12px;
+  margin-bottom: 4%;
+
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.moviePoster{
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.selectPages{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+  color:rgb(255, 221, 85);;
+  width: 100%;
+  height: 46px;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  border-radius: 36px;
+  /* text-shadow: 2px 2px 2px black; */
+}
+
+.pageSpan{
+  font-size: 18pt;
+}
+
+.pageButtons{
+  width: 6%;
+  height: 80%;
+  border: 2px solid rgb(255, 221, 85);
+  border-radius: 26px;
+  color: white;
+  background-color:rgba(33, 33, 33, 1.0);
+  font-size: 20pt;
+}
+
+.pageButtons:hover{
+  cursor:pointer;
+  text-shadow: 0 0 4px rgb(255, 221, 85);
+}

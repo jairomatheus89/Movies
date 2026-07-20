@@ -30,4 +30,17 @@ public class GlobalExceptionsHandler {
 
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
     }
+
+
+
+    @ExceptionHandler(FavoriteMovieException.class)
+    public ResponseEntity<ErrorResponse> handleFavoriteMovieException(FavoriteMovieException ex){
+
+        ErrorResponse error = new ErrorResponse(
+                HttpStatus.UNAUTHORIZED.value(),
+                ex.getMessage()
+        );
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
+    }
 }

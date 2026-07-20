@@ -7,6 +7,35 @@
   min-height: 100vh;
 }
 
-h1{
+h2{
     color:white;
 }
+
+.favAlertOk{
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 16pt;
+  color:rgb(23, 214, 23);
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 32px;
+}
+
+.favAlertFail{
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 16pt;
+  color:red;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 32px;
+}
+

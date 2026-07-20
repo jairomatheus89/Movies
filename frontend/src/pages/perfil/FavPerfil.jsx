@@ -1,9 +1,8 @@
+import { useEffect, useState } from 'react';
 import './Perfil.css'
 
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
-import MovieContents from '../../components/perfilMoviesCont/PerfilMoviesCont'
-import { useEffect, useState } from 'react';
 
 async function fetchProfileData(){
 
@@ -20,9 +19,9 @@ async function fetchProfileData(){
     return response;
 }
 
-function Perfil(){
+
+function FavPerfil(){
     const [user, setUser] = useState(null);
-    const [favAlert, setFavAlert] = useState("");
 
     useEffect(() => {
         async function callUserData(){
@@ -31,16 +30,14 @@ function Perfil(){
             setUser(data);
         }
         callUserData();
-    }, [favAlert])
+    }, [])
 
     return(
         <div className="body">
-            <Header isLoginPage={false} userData={user} isFavPage={false}/>
-            <MovieContents setFavAlert={setFavAlert}/>
+            <Header isLoginPage={false} userData={user} isFavPage={true}/>
             <Footer/>
-            <div className={!favAlert.startsWith("ESSE FILME JA")? 'favAlertOk' : 'favAlertFail'}>{favAlert}</div>
         </div>
     );
 }
 
-export default Perfil;
+export default FavPerfil;
